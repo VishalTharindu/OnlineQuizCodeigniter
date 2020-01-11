@@ -16,6 +16,7 @@
 <body>
     <?=$this->include('incfile/innernavi')?>
     <div class="container">
+    <?php echo validation_errors(); ?>
         <div class="col-md-12">
             <div class="card">
                 <div class="card-content">

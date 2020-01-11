@@ -77,6 +77,9 @@ $routes->get('/Registration', 'RegistrationController::index');
 $routes->get('/Login', 'LoginController::index');
 $routes->get('/nav', 'LoginController::testnav');
 $routes->get('/create/quiz', 'QuizController::createquiz');
+$routes->post('/store/quiz', 'QuizController::storequiz');
+$routes->get('/create/question', 'QuizController::createquestion');
+$routes->post('/store/question', 'QuestionController::storequestion');
 
 
 /**

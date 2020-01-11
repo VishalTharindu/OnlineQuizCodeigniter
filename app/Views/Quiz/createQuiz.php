@@ -17,13 +17,22 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-content">
+                    <!-- <div class="my-5"></div> -->
                     <h2 class="text-center text-danger">Create Your Quiz</h2>
                     <div class="my-5"></div>
-                    <form action="">
+                    <form action="/store/quiz" method="post">
                         <div class="form-group">
                             <label class="form-control-label" for="input-country">Quiz Title</label>
-                            <input name="title" class="form-control" type="text">
-                        </div>                  
+                            <input name="title" class="form-control" type="text">                            
+                        </div>
+                        <p class='text-danger'>
+                            <?php 
+                                if(\Config\Services::validation()->hasError('title'))
+                                {
+                                    echo $validation->showError('title');
+                                }
+                            ?>
+                        </p>                  
                         <label class="form-control-label" for="input-country">Quiz Type</label>
                         <div class="form-group">
                             <select name="type" class="form-control" id="Type">
@@ -32,37 +41,77 @@
                                 <option  value="Programming">Programming</option>
                                 <option  value="Mathamatic">Mathamatic</option>
                                 <option  value="Finance">Finance</option>
-                            </select>            
+                            </select>                                       
                         </div>
+                        <p class=''>
+                            <?php 
+                                if(\Config\Services::validation()->hasError('type'))
+                                {
+                                    echo $validation->showError('type');
+                                }
+                            ?>
+                        </p>
                         <label class="form-control-label" for="input-country">Quiz Time</label>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input name="time" class="form-control" type="text"> 
-                                </div>                                
+                                    <input name="time" class="form-control" type="text">
+                                </div>
+                                <p class=''>
+                                    <?php 
+                                        if(\Config\Services::validation()->hasError('time'))
+                                        {
+                                            echo $validation->showError('time');
+                                        }
+                                    ?>
+                                </p>                                 
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <select name="timetype" class="form-control" id="Type">
                                         <option value="Minute">Minute</option>
                                         <option  value="Hour">Hour</option>                            
-                                    </select>
+                                    </select>                                   
                                 </div>
+                                <p class='required'>
+                                    <?php 
+                                        if(\Config\Services::validation()->hasError('timetype'))
+                                        {
+                                            echo $validation->showError('timetype');
+                                        }
+                                    ?>
+                                </p>
                             </div>
                         </div>
-                        <div class="row">
-                        <label class="form-control-label" for="input-country">User Email</label>  
+                        <div class="row">                        
                             <div class="col-md-12">
+                            <label class="form-control-label" for="input-country">User Email</label>
                                 <div class="form-group">
-                                    <input name="time" class="form-control" type="text"> 
-                                </div>                                
+                                    <input name="email" class="form-control" type="text">                                   
+                                </div>
+                                <p class='text-danger'>
+                                    <?php 
+                                        if(\Config\Services::validation()->hasError('email'))
+                                        {
+                                            echo $validation->showError('email');
+                                        }
+                                    ?>
+                                </p>                                
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="form-control-label" for="input-country">Description</label>               
-                            <textarea id="drive-demo" rows="4" name="description" class="form-control" placeholder="" value="" ></textarea>
+                            <textarea id="drive-demo" rows="4" name="description" class="form-control" placeholder="" value="" ></textarea>                            
                         </div>
-                        <input type="button" class="btn btn-success" value="Add">
+                        <h4 class='text-danger'>
+                            <?php 
+                                if(\Config\Services::validation()->hasError('description'))
+                                {
+                                    echo $validation->showError('description');
+                                }
+                            ?>
+                        </h4>
+                        <button type="submit" class="btn btn-success">Add</button>
                     </form>                                                                
             </div>
         </div>

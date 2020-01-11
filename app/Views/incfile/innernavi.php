@@ -30,7 +30,7 @@
         <div class="collapse navbar-collapse" id="navigation-example-2">
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="#pablo">
+                    <a href="/create/quiz">
                         Create Quiz
                     </a>
                 </li>
