@@ -14,7 +14,7 @@ class QuizController extends BaseController
 	{
 		helper('form');
 		$quizs = new QuizModel();
-
+		
 		helper(['form', 'url']);
 
 			if (! $this->validate([
