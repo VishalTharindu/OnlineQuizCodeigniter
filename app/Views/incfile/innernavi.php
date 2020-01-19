@@ -9,8 +9,11 @@
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
 
-	<!-- CSS Files -->
+    <!-- CSS Files -->
+    <script src="/assets/js/jquery.min.js" type="text/javascript"></script>
+    <script src="/assets/js/bootstrap.min.js" type="text/javascript"></script>
     <?=$this->include('incfile/insidelinkz')?>
+
 </head>
 <body>
     <nav class="navbar navbar-inverse" role="navigation-demo">
@@ -23,7 +26,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#pablo">Navbar with notification</a>
+            <a class="navbar-brand" href="/">Home</a>
         </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -35,7 +38,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#pablo">
+                    <a href="/show/quiz">
                         Participate Quiz
                     </a>
                 </li>

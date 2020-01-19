@@ -80,6 +80,11 @@ $routes->get('/create/quiz', 'QuizController::createquiz');
 $routes->post('/store/quiz', 'QuizController::storequiz');
 $routes->get('/create/question', 'QuizController::createquestion');
 $routes->post('/store/question', 'QuestionController::storequestion');
+$routes->get('/show/quiz', 'QuizController::showquiz');
+$routes->get('/show/question/(:num)', 'QuestionController::showQuestion/$1');
+
+
+
 
 
 /**

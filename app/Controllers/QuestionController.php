@@ -43,7 +43,22 @@ class QuestionController extends BaseController
 				return redirect()->to(base_url('/create/quiz'));
 
 			}
-    }
+	}
+	
+	public function showQuestion($id){
+
+
+		// $db  = \Config\Database::connect();
+        // $dansel = $db->table('dansels')->where('id', $id)->get();
+        // $dansel=$dansel->getResult();
+        // return view('Dansel/view',['data'=>$dansel]);
+        
+        $QuizModel = new \App\Models\QuestionModel();
+		$question = $QuizModel->where('quizNo', $id)->findAll();
+		
+        return view('Quiz/showQuestion',['data'=>$question]);
+		
+	}
 
 	
 

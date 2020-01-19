@@ -1,6 +1,7 @@
 <?php namespace App\Controllers;
  use App\Models\QuizModel as QuizModel;
  $validation =  \Config\Services::validation();
+ 
 
 class QuizController extends BaseController
 {
@@ -49,6 +50,24 @@ class QuizController extends BaseController
 	public function createquestion()
 	{
 		return view('Quiz/addQuestion');
+	}
+	
+	public function showquiz()
+	{
+
+		$QuizModel = new \App\Models\QuizModel();
+		// $Quiz = $QuizModel->findAll();
+		$data = [
+            'quizes' => $QuizModel->paginate(5),
+            'pager' => $QuizModel->pager
+        ];
+        
+        return view('Quiz/showQuiz', $data);
+		// $data = array(
+		// 	// 'id' => $Quiz->'id';
+		// )
+		// dd($Quiz);
+		// return view('Quiz/showQuiz', $data);
     }
 
 	
