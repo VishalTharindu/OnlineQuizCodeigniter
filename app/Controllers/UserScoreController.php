@@ -9,4 +9,15 @@ class UserScoreController extends BaseController
     {
         return view('UserScore/userParticipating');
     }
+
+    public function showquiz()
+    {
+        $session = \Config\Services::session($config);
+        $UserId = $session->get('id');
+        
+        $QuizModel = new \App\Models\QuizModel();
+        $quiz = $QuizModel->where('userid ', $UserId)->findAll();
+        
+        return view('UserScore/userQuiz',['data'=>$quiz]);
+    }
 }

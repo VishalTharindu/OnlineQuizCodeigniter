@@ -125,25 +125,26 @@
     <div class="my-5"></div>
     <div class="main">
 
-        <section class="signup">
-            <!-- <img src="img/signup-bg.jpg" alt=""> -->
+    <section class="signup">
             <div class="container">
                 <div class="d-flex justify-content-center">
                     <div class="signup-content">
-                        <form method="POST" id="signup-form" class="signup-form">
+                        <form method="POST" id="signup-form" class="signup-form" href="<?php echo base_url();?>/login">
                             <h2 class="form-title text-success">Sign In</h2>
+                            <?php if ($_SESSION['error']) : ?>
+                            <span class="text-danger">*<?php echo $_SESSION['error']; ?></span>
+                            <?php endif; ?>
                             <div class="my-5"></div>
                             <div class="form-group">
                                 <input type="email" class="form-input" name="email" id="email" placeholder="Your Email"/>
+                                <span class="text-danger"><?= \Config\Services::validation()->geterror('email'); ?></span>
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-input" name="password" id="password" placeholder="Password"/>
+                                <input type="password" class="form-input" name="password" id="password" placeholder="Password"/>
+                                <span
+                                    class="text-danger"><?= \Config\Services::validation()->geterror('password'); ?></span>
                                 <span toggle="#password" class="zmdi zmdi-eye field-icon toggle-password"></span>
                             </div>                           
-                            <div class="form-group">
-                                <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
-                                <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
-                            </div>
                             <div class="form-group">
                                 <input type="submit" name="submit" id="submit" class="form-submit" value="Sign up"/>
                             </div>

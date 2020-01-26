@@ -189,7 +189,7 @@
                             </p> 
                         </div>
                         <button type="submit" class="btn btn-primary">Add</button>
-                        <button class="btn btn-success"><a href="/" class='text-white'>Return Home</a></button>
+                        <button class="btn btn-success"><a href="/create/quiz" class='text-white'>Return Home</a></button>
                     </form>
                 </div>                                                                      
             </div>

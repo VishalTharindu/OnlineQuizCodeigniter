@@ -93,7 +93,7 @@
                             <div class="col-md-12">
                             <label class="form-control-label" for="input-country">User Email</label>
                                 <div class="form-group">
-                                    <input name="email" class="form-control" type="text">                                   
+                                    <input name="email" class="form-control" type="text" value="<?= $_SESSION['email'] ?>">                                   
                                 </div>
                                 <p class='text-danger'>
                                     <?php 

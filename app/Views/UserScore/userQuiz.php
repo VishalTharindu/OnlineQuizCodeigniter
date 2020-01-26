@@ -20,7 +20,7 @@
 </head>
 <body>
     <?=$this->include('incfile/innernavi')?>
-    <?php foreach ($quizes as $item) : ?>              
+    <?php foreach ($data as $item) : ?>              
     <div class="container">     
         <div class="row">        
             <div class="col-md-12">
@@ -47,11 +47,13 @@
                                     </div>                                                  
                                 </div>              
                                 <div class="row">
-                                    <div class="col-md-4">
-                                        <a href="/show/question/<?= $item['id'] ?>"><button type="submit" class="btn btn-success">Start</button></a>
+                                    <div class="col-md-8">
+                                        
                                     </div>
-                                    <div class="col-md-8">                              
-                                    </div> 
+                                    <div class="col-md-4">
+                                    <a href="/edit/quiz/<?= $item['id'] ?>"><button type="submit" class="btn btn-warning">Edit</button></a>
+                                    <a href="/delete/quiz/<?= $item['id'] ?>"><button type="submit" class="btn btn-danger">Delete</button></a>
+                                </div> 
                                 </div>                                           
                             </div>                      
                         </div>                                     

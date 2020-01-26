@@ -23,6 +23,7 @@ class CreateUsersTables extends Migration
             'name' => ['type' => 'varchar', 'constraint' => 255],
             'email' => ['type' => 'varchar', 'constraint' => 255],
             'password' => ['type' => 'varchar', 'constraint' => 255],
+            'rank' => ['type' => 'varchar', 'constraint' => 255],
             'created_at' => ['type' => 'datetime', 'null' => true],
             'updated_at' => ['type' => 'datetime', 'null' => true],
             'deleted_at' => ['type' => 'datetime', 'null' => true],

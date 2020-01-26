@@ -10,7 +10,7 @@ class QuizModel extends Model
         protected $returnType = 'array';
         protected $useSoftDeletes = true;
 
-        protected $allowedFields = ['title', 'type', 'time', 'timetype', 'email', 'description'];
+        protected $allowedFields = ['userid', 'title', 'type', 'time', 'timetype', 'email', 'description'];
 
         protected $useTimestamps = true;
         protected $createdField  = 'created_at';

@@ -13,6 +13,9 @@ class QuizController extends BaseController
     public function storequiz()
 	{
 		// helper("tatter\alerts");
+		$session = \Config\Services::session($config);
+		$userId = $session->get('id');
+
 		helper('form');
 		$quizs = new QuizModel();
 		
@@ -36,6 +39,7 @@ class QuizController extends BaseController
 			else
 			{
 				$quizs->save([
+					'userid' =>$userId,
 					'title' => $this->request->getVar('title'),
 					'type' => $this->request->getVar('type'),
 					'time' => $this->request->getVar('time'),
@@ -60,7 +64,9 @@ class QuizController extends BaseController
 	
 	public function showquiz()
 	{
-
+		$session = \Config\Services::session($config);
+		$name = $session->get('id');
+		// dd($name);
 		$QuizModel = new \App\Models\QuizModel();
 		// $Quiz = $QuizModel->findAll();
 		$data = [
@@ -78,9 +84,18 @@ class QuizController extends BaseController
 	
 	public function editquiz($id)
 	{
+
+		$session = \Config\Services::session($config);
+		$userId = $session->get('id');
+
 		$QuizModel = new \App\Models\QuizModel();
 		$quiz = $QuizModel->where('id', $id)->findAll();
-
+		$i = 1;
+		$quizUid = $quiz[$i];
+		print_r($quizUid);
+		if ($quizUid == $userId) {
+			// dd($quizUid);
+		}
 		
         return view('Quiz/editQuiz',['data'=>$quiz]);
 	}

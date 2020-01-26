@@ -74,19 +74,23 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 $routes->get('/Registration', 'RegistrationController::index');
-$routes->get('/Login', 'LoginController::index');
+$routes->post('/Registration', 'RegistrationController::RegisterUser');
+$routes->get('/Login', 'LoginController::index',['as' => 'login']);
+$routes->post('/Login', 'LoginController::login');
+$routes->get('logout', 'LoginController::logout');
 $routes->get('/nav', 'LoginController::testnav');
-$routes->get('/create/quiz', 'QuizController::createquiz');
+$routes->get('/create/quiz', 'QuizController::createquiz',['filter' => 'aunthenticate']);
 $routes->post('/store/quiz', 'QuizController::storequiz');
-$routes->get('/create/question', 'QuizController::createquestion');
-$routes->post('/store/question', 'QuestionController::storequestion');
-$routes->get('/show/quiz', 'QuizController::showquiz');
+$routes->get('/create/question', 'QuizController::createquestion',['filter' => 'aunthenticate']);
+$routes->post('/store/question', 'QuestionController::storequestion',['filter' => 'aunthenticate']);
+$routes->get('/show/quiz', 'QuizController::showquiz',['filter' => 'aunthenticate']);
 $routes->get('/show/question/(:num)', 'QuestionController::showQuestion/$1');
 $routes->get('/edit/quiz/(:num)', 'QuizController::editquiz/$1');
 $routes->post('/update/quiz/', 'QuizController::updateQuiz');
 $routes->get('/delete/quiz/(:num)', 'QuizController::deleteQuiz/$1');
 $routes->post('/save/result/', 'QuestionController::checkresult');
 $routes->get('/user/quizinfo/', 'UserScoreController::showuserquizinfo');
+$routes->get('/show/user/quiz', 'UserScoreController::showquiz',['filter' => 'aunthenticate']);
 
 
 
