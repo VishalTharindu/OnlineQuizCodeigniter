@@ -4,21 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Edit Quiz</title>
 
     <?=$this->include('incfile/insidelinkz')?>
 
     <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     <script>tinymce.init({selector:'textarea'});</script>
-    <style>
-        .error-text{
-            color:red!important;
-        }
-    </style>
 </head>
 <body>
     <?=$this->include('incfile/innernavi')?>
-    <?= service('alerts')->display(); ?>
     <div class="container">
         <div class="col-md-12">
             <div class="card">
@@ -26,22 +20,25 @@
                     <!-- <div class="my-5"></div> -->
                     <h2 class="text-center text-danger">Create Your Quiz</h2>
                     <div class="my-5"></div>
-                    <form action="/store/quiz" method="post">
+                    <?php foreach ($data as $item) : ?> 
+                    <form action="/update/quiz" method="post">
+                        <input type="hidden" name="quizid" id="" value="<?= $item['id'] ?>">
                         <div class="form-group">
                             <label class="form-control-label" for="input-country">Quiz Title</label>
-                            <input name="title" class="form-control" type="text">                            
+                            <input name="title" class="form-control" type="text" value="<?= $item['title'] ?>">                            
                         </div>
-                        <h1 class='error-text'>
+                        <p class='text-danger'>
                             <?php 
                                 if(\Config\Services::validation()->hasError('title'))
                                 {
-                                    echo "<h2>".$validation->showError('title')."</h2>";
+                                    echo $validation->showError('title');
                                 }
                             ?>
-                        </h1>                  
+                        </p>                  
                         <label class="form-control-label" for="input-country">Quiz Type</label>
                         <div class="form-group">
                             <select name="type" class="form-control" id="Type">
+                                <option value="Genaral Knowladge"><?= $item['type'] ?></option>
                                 <option value="Genaral Knowladge">Genaral Knowladge</option>
                                 <option  value="Networking">Networking</option>
                                 <option  value="Programming">Programming</option>
@@ -61,7 +58,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input name="time" class="form-control" type="text">
+                                    <input name="time" class="form-control" type="text" value="<?= $item['time'] ?>">
                                 </div>
                                 <p class=''>
                                     <?php 
@@ -75,6 +72,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <select name="timetype" class="form-control" id="Type">
+                                        <option value="Minute"><?= $item['timetype'] ?></option>
                                         <option value="Minute">Minute</option>
                                         <option  value="Hour">Hour</option>                            
                                     </select>                                   
@@ -93,7 +91,7 @@
                             <div class="col-md-12">
                             <label class="form-control-label" for="input-country">User Email</label>
                                 <div class="form-group">
-                                    <input name="email" class="form-control" type="text">                                   
+                                    <input name="email" class="form-control" type="text" value="<?= $item['email'] ?>">                                   
                                 </div>
                                 <p class='text-danger'>
                                     <?php 
@@ -107,7 +105,7 @@
                         </div>
                         <div class="form-group">
                             <label class="form-control-label" for="input-country">Description</label>               
-                            <textarea id="drive-demo" rows="4" name="description" class="form-control" placeholder="" value="" ></textarea>                            
+                            <textarea id="drive-demo" rows="4" name="description" class="form-control" placeholder="" value="" ><?= $item['description'] ?></textarea>                            
                         </div>
                         <h4 class='text-danger'>
                             <?php 
@@ -118,7 +116,8 @@
                             ?>
                         </h4>
                         <button type="submit" class="btn btn-success">Add</button>
-                    </form>                                                                
+                    </form>
+                <?php endforeach ?>                                                                
             </div>
         </div>
     </div>   

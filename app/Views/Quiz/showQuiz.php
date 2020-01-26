@@ -45,8 +45,16 @@
                                     <div class="col-md-12">
                                         <p><?= $item['description'] ?></p> 
                                     </div>                                                  
-                                </div>
-                                <a href="/show/question/<?= $item['id'] ?>"><button type="submit" class="btn btn-success">Start</button></a>                                
+                                </div>              
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <a href="/show/question/<?= $item['id'] ?>"><button type="submit" class="btn btn-success">Start</button></a>
+                                    </div>
+                                    <div class="col-md-8">
+                                    <a href="/edit/quiz/<?= $item['id'] ?>"><button type="submit" class="btn btn-warning">Edit</button></a>
+                                    <a href="/delete/quiz/<?= $item['id'] ?>"><button type="submit" class="btn btn-danger">Delete</button></a>
+                                </div> 
+                                </div>                                           
                             </div>                      
                         </div>                                     
                     </div>                                                                      

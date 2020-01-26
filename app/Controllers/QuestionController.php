@@ -1,5 +1,6 @@
 <?php namespace App\Controllers;
  use App\Models\QuestionModel as QuestionModel;
+ use App\Models\UserScore as UserScore;
  $validation =  \Config\Services::validation();
 
 class QuestionController extends BaseController
@@ -7,6 +8,7 @@ class QuestionController extends BaseController
 	
 	public function storequestion()
 	{
+		helper('alerts');
 		helper('form');
 		$question = new QuestionModel();
 
@@ -40,7 +42,9 @@ class QuestionController extends BaseController
                     'frtanswer' => $this->request->getVar('frtanswer'),
 					'correctAnswer' => $this->request->getVar('correctAnswer'),
 				]);
-				return redirect()->to(base_url('/create/quiz'));
+				alert('success', "You did it!");
+				return redirect()->to(base_url('/create/question'));
+
 
 			}
 	}
@@ -58,6 +62,48 @@ class QuestionController extends BaseController
 		
         return view('Quiz/showQuestion',['data'=>$question]);
 		
+	}
+
+	public function checkresult()
+	{
+
+		helper('form');
+		$scores = new UserScore();
+
+		helper(['form', 'url']);
+
+		$questionNO= $this->request->getPost('questionno');
+		$quizID = $this->request->getPost('quizId');
+		$userID;
+
+		$QuizModel = new \App\Models\QuestionModel();
+		$question = $QuizModel->where('quizNo', $quizID)->findAll();
+		$count = count($question);
+		
+		$score = 0;
+		for ($i=0; $i < $count ; $i++) {			
+			$usanswer = $this->request->getPost($i+1);
+			$QueNo = $questionNO[$i];
+			$QuizModel = new \App\Models\QuestionModel();
+			$where = array(
+				'quizNo' => $quizID,
+				'questionNo' => $QueNo
+			);
+			$question = $QuizModel->where($where)->findColumn('correctAnswer');
+			for ($x=0; $x < 1; $x++) {
+				if($question[$x] === $usanswer){
+					$score++;		
+				}		
+			}							
+		}
+		$scores->save([
+			'user_id' => $userID,
+			'Quiz_id' => $quizID,
+			'score' => $score,
+		]);
+
+		return view('UserScore/showScore',['data'=>$score]);
+
 	}
 
 	

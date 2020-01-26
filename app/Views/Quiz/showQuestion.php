@@ -20,47 +20,56 @@
 </head>
 <body>
     <?=$this->include('incfile/innernavi')?>
-    <?php foreach ($data as $item) : ?>    
     <div class="container">
-        <div class="col-md-12">
-            <h1></h1>
-            <div class="card">
-                <div class="card-content">
-                    <div class="my-5"></div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h5 class="title"><?= $item['questionNo'] ?><?= $item['question'] ?></h5>
-                        </div>                   
+        <form action="/save/result/" method="post">
+            <?php foreach ($data as $item) : ?> 
+            <div class="form-control">
+                <div class="col-md-12">
+                    <h1></h1>
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="my-5"></div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h5 class="title"><?= $item['questionNo'] ?><?= $item['question'] ?></h5>
+                                </div>
+                                <input type="hidden" name="quizId" id="" value="<?= $item['quizNo'] ?>">
+                                <input type="hidden" name="questionno[]" id="" value="<?= $item['questionNo'] ?>">                   
+                            </div>
+                            <div class="radio">
+                                <label class="text-success">                                                  
+                                    <input type="radio" name="<?= $item['questionNo'] ?>" value="1">                            
+                                    <p class="text-dark">1.&nbsp;&nbsp;<?= $item['fstanswer'] ?></p>
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>                           
+                                    <input type="radio" name="<?= $item['questionNo'] ?>" value="2">
+                                    <p class="text-dark">2.&nbsp;&nbsp;<?= $item['secanswer'] ?></p>
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="<?= $item['questionNo'] ?>" value="3">
+                                    <p class="text-dark">3.&nbsp;&nbsp;<?= $item['thranswer'] ?></p>                            
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="<?= $item['questionNo'] ?>" value="4">                          
+                                    <p class="text-dark">4.&nbsp;&nbsp;<?= $item['frtanswer'] ?></p>
+                                </label>
+                            </div>
+                        </div>                                                                      
                     </div>
-                    <div class="radio">
-                        <label class="text-success">                                                  
-                            <input type="radio" name="optionsRadios">                            
-                            <p class="text-dark">1.&nbsp;&nbsp;<?= $item['fstanswer'] ?></p>
-                        </label>
-                    </div>
-                    <div class="radio">
-                        <label>                           
-                            <input type="radio" name="optionsRadios">
-                            <p class="text-dark">2.&nbsp;&nbsp;<?= $item['secanswer'] ?></p>
-                        </label>
-                    </div>
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="optionsRadios">
-                            <p class="text-dark">3.&nbsp;&nbsp;<?= $item['thranswer'] ?></p>                            
-                        </label>
-                    </div>
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="optionsRadios">                          
-                            <p class="text-dark">4.&nbsp;&nbsp;<?= $item['frtanswer'] ?></p>
-                        </label>
-                    </div>
-                </div>                                                                      
+                </div>      
+            </div>   
+            <?php endforeach ?>
+            <div class="form-control">
+                <button type="submit" class="btn btn-success">Finish</button> 
             </div>
-        </div>
+        </form>
     </div>
-    <?php endforeach ?>   
 </body>
     <script>
         tinymce.init({
