@@ -29,17 +29,30 @@
                             {
                                     echo "
                                         <input class='form-control' name='quizNo' value='$row->id'placeholder='Example: 1' type='hidden'>
-                                    "; 
+                                    ";
+                                    $id = $row->id;
                                 
+                            }
+                            $builder = $db->table('questions');
+                            $result = $builder->where('quizNo', $id)->orderBy('id', 'DESC');
+                            $query2 = $result->get(1);
+                            foreach ($query2->getResult() as $row2)
+                            {                              
+                                $idf = $row2->questionNo;
+                                $quNo = $idf+1;                               
                             }
                         ?>
                         <div class="row">
-                            <label class="text-muted" for="input-country">Question No</label> 
-                            <div class="form-group">                         
-                                <div class="col-md-6">
-                                    <input class="form-control" name='questionNo' placeholder='Example: 1' type="text">
-                                </div>
-                            </div>
+                            <label class="text-muted" for="input-country">Question No</label>
+                            <?php 
+                                echo "
+                                    <div class='form-group'>                         
+                                        <div class='col-md-6'>
+                                            <input class='form-control' name='questionNo' placeholder='Example: 1' type='text' value='$quNo'>
+                                        </div>
+                                    </div>                           
+                                ";
+                            ?> 
                             <p class='text-danger'>
                                 <?php 
                                     if(\Config\Services::validation()->hasError('questionNo'))
@@ -48,6 +61,7 @@
                                     }
                                 ?>
                             </p> 
+
                         </div>
                         <div class="my-5"></div>
                         <div class="row">

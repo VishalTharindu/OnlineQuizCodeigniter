@@ -82,7 +82,12 @@ $routes->get('/create/question', 'QuizController::createquestion');
 $routes->post('/store/question', 'QuestionController::storequestion');
 $routes->get('/show/quiz', 'QuizController::showquiz');
 $routes->get('/show/question/(:num)', 'QuestionController::showQuestion/$1');
+$routes->get('/edit/quiz/(:num)', 'QuizController::editquiz/$1');
+$routes->post('/update/quiz/', 'QuizController::updateQuiz');
+$routes->get('/delete/quiz/(:num)', 'QuizController::deleteQuiz/$1');
 $routes->post('/save/result/', 'QuestionController::checkresult');
+$routes->get('/user/quizinfo/', 'UserScoreController::showuserquizinfo');
+
 
 
 

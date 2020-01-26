@@ -8,6 +8,7 @@ class QuestionController extends BaseController
 	
 	public function storequestion()
 	{
+		helper('alerts');
 		helper('form');
 		$question = new QuestionModel();
 
@@ -41,7 +42,9 @@ class QuestionController extends BaseController
                     'frtanswer' => $this->request->getVar('frtanswer'),
 					'correctAnswer' => $this->request->getVar('correctAnswer'),
 				]);
-				return redirect()->to(base_url('/create/quiz'));
+				alert('success', "You did it!");
+				return redirect()->to(base_url('/create/question'));
+
 
 			}
 	}

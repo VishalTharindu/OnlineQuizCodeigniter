@@ -66,7 +66,7 @@
             </div>   
             <?php endforeach ?>
             <div class="form-control">
-                <button type="submit" class="btn btn-success">Add</button> 
+                <button type="submit" class="btn btn-success">Finish</button> 
             </div>
         </form>
     </div>
