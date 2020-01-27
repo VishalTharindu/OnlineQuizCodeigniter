@@ -20,6 +20,7 @@ class CreateQuizsTables extends Migration
          * can use both features of CodeIgniter\Model, $useTimestamps and $useSoftDeletes.
          */
         $fields = [
+            'userid' => ['type' => 'varchar', 'constraint' => 255],
             'title' => ['type' => 'varchar', 'constraint' => 255],
             'type' => ['type' => 'varchar', 'constraint' => 255],
             'time' => ['type' => 'varchar', 'constraint' => 255],

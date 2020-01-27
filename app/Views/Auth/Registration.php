@@ -128,14 +128,14 @@
     <div class="my-5"></div>
     <div class="main">
 
-        <section class="signup">
+    <section class="signup">
             <!-- <img src="img/signup-bg.jpg" alt=""> -->
             <div class="container">
                 <div class="signup-content">
                     <form method="POST" id="signup-form" class="signup-form">
                         <h2 class="form-title text-success">Create account</h2>
                         <div class="form-group">
-                            <input type="text" class="form-input" name="name" id="name" placeholder="Your Name"/>
+                            <input type="text" class="form-input" name="name" id="name" placeholder="Your Name"/ >
                         </div>
                         <div class="form-group">
                             <input type="email" class="form-input" name="email" id="email" placeholder="Your Email"/>

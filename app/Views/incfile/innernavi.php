@@ -71,10 +71,10 @@
                             <a href="#pablo">Me</a>
                         </li>
                         <li>
-                            <a href="#pablo">Settings and other stuff</a>
+                            <a href="/show/user/quiz">My Quiz</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="#pablo">Sign out</a></li>
+                        <li><a href="<?php echo base_url(); ?>/logout">Sign out</a></li>
                     </ul>
                 </li>
             </ul>
