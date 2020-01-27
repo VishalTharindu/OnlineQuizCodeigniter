@@ -8,6 +8,7 @@ class QuestionController extends BaseController
 	
 	public function storequestion()
 	{
+
 		helper('alerts');
 		helper('form');
 		$question = new QuestionModel();
@@ -67,6 +68,9 @@ class QuestionController extends BaseController
 	public function checkresult()
 	{
 
+		$session = \Config\Services::session($config);
+		$userID = $session->get('id');
+
 		helper('form');
 		$scores = new UserScore();
 
@@ -101,6 +105,18 @@ class QuestionController extends BaseController
 			'Quiz_id' => $quizID,
 			'score' => $score,
 		]);
+
+		$UserModel = new \App\Models\UserModel();
+		$user = $UserModel->find($userID);
+		$userRank = $user['rank'];
+		$newUserRank= $userRank + $score;
+		$data = [
+			'rank' => $newUserRank,
+		];
+
+		$UserModel->update($userID,$data);
+
+
 
 		return view('UserScore/showScore',['data'=>$score]);
 

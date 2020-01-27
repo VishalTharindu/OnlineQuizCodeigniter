@@ -15,68 +15,65 @@
                 <thead>
                     <tr>
                         <th class="text-center">#</th>
-                        <th>Name</th>
-                        <th>Job Position</th>
-                        <th>Since</th>
-                        <th class="text-right">Salary</th>
-                        <th class="text-right">Actions</th>
+                        <th>User Name</th>
+                        <th>Quiz Title</th>
+                        <th>Your Score</th>                       
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td class="text-center">1</td>
-                        <td>Andrew Mike</td>
-                        <td>Develop</td>
-                        <td>2013</td>
-                        <td class="text-right">&euro; 99,225</td>
-                        <td class="td-actions text-right">
-                            <button type="button" rel="tooltip" class="btn btn-info">
-                                <i class="material-icons">person</i>
-                            </button>
-                            <button type="button" rel="tooltip" class="btn btn-success">
-                                <i class="material-icons">edit</i>
-                            </button>
-                            <button type="button" rel="tooltip" class="btn btn-danger">
-                                <i class="material-icons">close</i>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="text-center">2</td>
-                        <td>John Doe</td>
-                        <td>Design</td>
-                        <td>2012</td>
-                        <td class="text-right">&euro; 89,241</td>
-                        <td class="td-actions text-right">
-                            <button type="button" rel="tooltip" class="btn btn-info btn-round">
-                                <i class="material-icons">person</i>
-                            </button>
-                            <button type="button" rel="tooltip" class="btn btn-success btn-round">
-                                <i class="material-icons">edit</i>
-                            </button>
-                            <button type="button" rel="tooltip" class="btn btn-danger btn-round">
-                                <i class="material-icons">close</i>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="text-center">3</td>
-                        <td>Alex Mike</td>
-                        <td>Design</td>
-                        <td>2010</td>
-                        <td class="text-right">&euro; 92,144</td>
-                        <td class="td-actions text-right">
-                            <button type="button" rel="tooltip" class="btn btn-info btn-simple">
-                                <i class="material-icons">person</i>
-                            </button>
-                            <button type="button" rel="tooltip" class="btn btn-success btn-simple">
-                                <i class="material-icons">edit</i>
-                            </button>
-                            <button type="button" rel="tooltip" class="btn btn-danger btn-simple">
-                                <i class="material-icons">close</i>
-                            </button>
-                        </td>
-                    </tr>
+                <?php foreach ($data as $item) : ?>
+                    <?php 
+
+                        $userId = $item['user_id'];
+
+                        $db      = \Config\Database::connect();
+                        $builder = $db->table('users');
+                        $resu = $builder->where('id', $userId)->orderBy('id', 'DESC');
+                        $query = $resu->get(1);
+
+                        foreach ($query->getResult() as $row)
+                        {                              
+                            $UserName = $row->name;                  
+                        }
+
+                        $quizId = $item['Quiz_id'];
+
+                        $db      = \Config\Database::connect();
+                        $builder = $db->table('quizs');
+                        $resu = $builder->where('id', $quizId)->orderBy('id', 'DESC');
+                        $query2 = $resu->get();
+
+                        foreach ($query2->getResult() as $row2)
+                        {                              
+                            $QuizTitle = $row2->title;
+                            echo "
+                            <tr class=''>";
+                                echo "<td class='text-center'>1</td>";
+                                echo "<td><h4 class='rowback'>".$UserName."</h4></td>";
+                                echo "<td><h4 class='rowback'>".$QuizTitle."</h4></td>";
+                                echo "<td><h4 class='rowback'>".$item['score']."</h4></td>";
+                            echo "    
+                            </tr>
+                            ";                       
+                        }
+
+                        // if ($_SESSION['id'] == $item['id']) {
+                        //     // echo "done";
+                            
+                        // } else {
+                        //     echo "
+                        //     <tr class=''>";
+                        //         echo "<td class='text-center'>1</td>";
+                        //         echo "<td><h4 class=''>".$item['name']."</h4></td>";
+                        //         echo "<td><h4 class=''>".$item['email']."</h4></td>";
+                        //         echo "<td><h4 class=''>".$item['rank']."</h4></td>";
+                        //     echo "    
+                        //     </tr>
+                        //     ";
+                        // }
+                            
+                    ?>                   
+                    <?php endforeach ?> 
                 </tbody>
             </table>
         </div>
