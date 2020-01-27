@@ -7,7 +7,14 @@ class UserScoreController extends BaseController
 {
     public function showuserquizinfo()
     {
-        return view('UserScore/userParticipating');
+        $session = \Config\Services::session($config);
+        $UserId = $session->get('id');
+        
+        $UserScore = new \App\Models\UserScore();
+        $userscores = $UserScore->where('user_id', $UserId)->findAll();
+        
+        // return view('UserScore/userQuiz',['data'=>$quiz]);
+        return view('UserScore/userParticipating',['data'=>$userscores]);
     }
 
     public function showquiz()
@@ -20,4 +27,14 @@ class UserScoreController extends BaseController
         
         return view('UserScore/userQuiz',['data'=>$quiz]);
     }
+
+    public function showrank()
+    {
+        $UserModel = new \App\Models\UserModel();
+        $userRank = $UserModel->orderBy('rank', 'DESC')->findAll();
+        // dd($userRank);
+
+        return view('UserScore/UserRank',['data'=>$userRank]);
+    }
+
 }

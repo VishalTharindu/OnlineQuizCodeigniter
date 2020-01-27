@@ -89,8 +89,9 @@ $routes->get('/edit/quiz/(:num)', 'QuizController::editquiz/$1');
 $routes->post('/update/quiz/', 'QuizController::updateQuiz');
 $routes->get('/delete/quiz/(:num)', 'QuizController::deleteQuiz/$1');
 $routes->post('/save/result/', 'QuestionController::checkresult');
-$routes->get('/user/quizinfo/', 'UserScoreController::showuserquizinfo');
+$routes->get('/user/quizinfo/', 'UserScoreController::showuserquizinfo',['filter' => 'aunthenticate']);
 $routes->get('/show/user/quiz', 'UserScoreController::showquiz',['filter' => 'aunthenticate']);
+$routes->get('/show/user/rank', 'UserScoreController::showrank',['filter' => 'aunthenticate']);
 
 
 

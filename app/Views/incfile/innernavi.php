@@ -43,7 +43,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#pablo">
+                    <a href="/show/user/rank">
                         View Ranks
                     </a>
                 </li>
@@ -72,6 +72,9 @@
                         </li>
                         <li>
                             <a href="/show/user/quiz">My Quiz</a>
+                        </li>
+                        <li>
+                            <a href="/user/quizinfo/">My Scores</a>
                         </li>
                         <li class="divider"></li>
                         <li><a href="<?php echo base_url(); ?>/logout">Sign out</a></li>

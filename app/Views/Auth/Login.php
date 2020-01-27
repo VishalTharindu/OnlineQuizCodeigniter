@@ -146,11 +146,11 @@
                                 <span toggle="#password" class="zmdi zmdi-eye field-icon toggle-password"></span>
                             </div>                           
                             <div class="form-group">
-                                <input type="submit" name="submit" id="submit" class="form-submit" value="Sign up"/>
+                                <input type="submit" name="submit" id="submit" class="form-submit" value="Sign in"/>
                             </div>
                         </form>
                         <p class="loginhere">
-                            Dont you have an account ? <a href="/Registration" class="loginhere-link">Sign ip here</a>
+                            Dont you have an account ? <a href="/Registration" class="loginhere-link">Sign up here</a>
                         </p>
                     </div>
                 </div>
